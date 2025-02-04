@@ -6,7 +6,21 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/01/13 22:27:21 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/04 22:16:53 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minitalk.h"
+
+int	pid_val(char *pid_str)
+{
+	int	i;
+	int	pid;
+
+	i = 0;
+	pid = 0;
+	while(pid_str[i])
+	{
+		ft_
+	}
+}
