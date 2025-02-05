@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 17:13:56 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/05 15:36:52 by obouftou         ###   ########.fr       */
+/*   Created: 2025/02/05 15:11:45 by obouftou          #+#    #+#             */
+/*   Updated: 2025/02/05 16:43:01 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <signal.h>
-# include <limits.h>
-# include <unistd.h>
-
-
-#endif
+int ft_isdigit(int c)
+{
+	return (c >= 48 && 57 <= c);
+}
