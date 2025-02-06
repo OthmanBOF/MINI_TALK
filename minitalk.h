@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:13:56 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/06 14:45:49 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:02:50 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int			ft_atoi(const char *str);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr_fd(char *s, int fd);
-int			ft_isdigit(int c);
 
 #endif

@@ -6,16 +6,11 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:11:45 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/06 14:41:44 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:02:19 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-int	ft_isdigit(int c)
-{
-	return (c >= 48 && c <= 57);
-}
 
 static int	ft_isspace(char c)
 {

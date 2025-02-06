@@ -6,12 +6,11 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/06 15:58:49 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:02:40 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
 
 int	pid_check(char *pid_str)
 {
@@ -21,7 +20,7 @@ int	pid_check(char *pid_str)
 	i = 0;
 	while (pid_str[i])
 	{
-		if (!ft_isdigit(pid_str[i]))
+		if (pid_str[i] < '0' || pid_str[i] > '9')
 		{
 			ft_putstr_fd(RED "PID has non-digit chars.\n" "\e[0m", 2);
 			return (0);
@@ -59,12 +58,10 @@ void	sig_send(int pid, char x)
 	}
 }
 
-
-
-int	main (int ac ,char **av)
+int	main(int ac, char **av)
 {
-	int pid;
-	int x;
+	int	pid;
+	int	x;
 
 	x = 0;
 	if (ac == 3 && av[2][0] != '\0')
