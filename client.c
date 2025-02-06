@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/06 14:54:18 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:00:40 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,19 @@ int	main (int ac ,char **av)
 		pid = pid_check(av[1]);
 		if (pid != 0)
 		{
-			ft_putstr_fd(GRN);
+			ft_putstr_fd(GRN "Valid PID. Sending ...\n" "\e[0m", 1);
+			while (av[2][i])
+			{
+				ft_sig_send(pid, av[2][i]);
+				i++;
+			}
+			ft_sig_send(pid, '\0');
 		}
 	}
+	else
+	{
+		ft_putstr_fd(RED "Invalid args or empty msg.\n" "\e[0m", 2);
+		ft_putstr_fd(PUR "Usage: ./client [PID] [MSG]\n" "\e[0m", 2);
+	}
+	return (0);
 }
