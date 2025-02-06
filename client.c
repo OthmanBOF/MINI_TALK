@@ -6,12 +6,11 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/06 15:00:40 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:58:49 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
 
 
 int	pid_check(char *pid_str)
@@ -38,6 +37,29 @@ int	pid_check(char *pid_str)
 	return (pid);
 }
 
+void	sig_send(int pid, char x)
+{
+	int	sig;
+	int	bit;
+
+	bit = 0;
+	while (bit < 8)
+	{
+		if (x & (1 << bit))
+			sig = SIGUSR1;
+		else
+			sig = SIGUSR2;
+		if (kill(pid, sig) == -1)
+		{
+			ft_putstr_fd(RED "Invalid PID. Signal failed.\n" "\e[0m", 2);
+			exit(1);
+		}
+		usleep(600);
+		bit++;
+	}
+}
+
+
 
 int	main (int ac ,char **av)
 {
@@ -51,12 +73,12 @@ int	main (int ac ,char **av)
 		if (pid != 0)
 		{
 			ft_putstr_fd(GRN "Valid PID. Sending ...\n" "\e[0m", 1);
-			while (av[2][i])
+			while (av[2][x])
 			{
-				ft_sig_send(pid, av[2][i]);
-				i++;
+				sig_send(pid, av[2][x]);
+				x++;
 			}
-			ft_sig_send(pid, '\0');
+			sig_send(pid, '\0');
 		}
 	}
 	else
