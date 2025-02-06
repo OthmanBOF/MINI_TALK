@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/06 14:36:07 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:37:14 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main (int ac ,char **av)
 		pid = pid_check(av[1]); // to do
 		if (pid != 0)
 		{
-			ft_putstr_fd()
+			ft_putstr_fd(GRN);
 		}
 	}
 }
