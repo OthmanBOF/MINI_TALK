@@ -6,9 +6,20 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/05 21:08:49 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:29:10 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+int	main (int ac ,char **av)
+{
+	int pid;
+	int x;
+
+	x = 0;
+	if (ac == 3 && av[2][0] != '\0')
+	{
+		
+	}
+}
