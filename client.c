@@ -6,11 +6,19 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/06 14:29:10 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:36:07 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+
+
+
+
+
+
+
 
 int	main (int ac ,char **av)
 {
@@ -20,6 +28,10 @@ int	main (int ac ,char **av)
 	x = 0;
 	if (ac == 3 && av[2][0] != '\0')
 	{
-		
+		pid = pid_check(av[1]); // to do
+		if (pid != 0)
+		{
+			ft_putstr_fd()
+		}
 	}
 }
