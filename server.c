@@ -6,18 +6,18 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:30 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/07 14:58:13 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:03:22 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void    bit_to_arr(int sin, siginfo_t *info, void *context)
+void	bit_to_arr(int sin, siginfo_t *info, void *context)
 {
 	static int	pid;
 	static int	p_bit;
 	static char	c;
-	
+
 	(void)context;
 	if (pid != info->si_pid)
 	{
@@ -37,10 +37,10 @@ void    bit_to_arr(int sin, siginfo_t *info, void *context)
 	}
 }
 
-int main(void)
+int	main(void)
 {
-	struct sigaction    sin;
-	int                 pid;
+	struct sigaction	sin;
+	int					pid;
 
 	pid = getpid();
 	ft_putstr_fd(CY "Server PID: \e[0m", 1);
