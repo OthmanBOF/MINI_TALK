@@ -6,19 +6,19 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:30 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/07 13:09:49 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:58:13 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
 
 void    bit_to_arr(int sin, siginfo_t *info, void *context)
 {
 	static int	pid;
 	static int	p_bit;
 	static char	c;
-
+	
+	(void)context;
 	if (pid != info->si_pid)
 	{
 		pid = info->si_pid;
@@ -37,7 +37,7 @@ void    bit_to_arr(int sin, siginfo_t *info, void *context)
 	}
 }
 
-int main(int ac, char **av)
+int main(void)
 {
 	struct sigaction    sin;
 	int                 pid;
@@ -47,7 +47,7 @@ int main(int ac, char **av)
 	ft_putnbr_fd(pid, 1);
 	ft_putstr_fd("\n" GRN "Waiting...\n" "\e[0m", 1);
 	sin.sa_sigaction = bit_to_arr;
-	sin.sa_flag = SA_SIGINFO;
+	sin.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sin, NULL);
 	sigaction(SIGUSR2, &sin, NULL);
 	while (1)
