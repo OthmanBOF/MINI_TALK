@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:17:34 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/08 21:35:26 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/08 21:40:27 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,16 @@ void	var_res(int *pid, int *w_bit, char *c, int *buff_i)
 	*buff_i = 0; 
 }
 
-void	print_ack_buff()
+void	print_ack_buff(char *buffer, int *buff_i, int pid)
 {
+	int	i;
 	
+	i = 0;
+	while (i < *buff_i)
+		ft_putchar_fd(buffer[i++], 1);
+	if (buffer[*buff_i - 1] == '\0')
+		kill(pid, SIGUSR1);
+	*buff_i = 0;
 }
 
 void	bit_to_char(int sin, siginfo_t *info, void *context)
@@ -46,7 +53,7 @@ void	bit_to_char(int sin, siginfo_t *info, void *context)
 		c = 0;
 		w_bit = 0;
 		if (buff_i == 4 || buffer[buff_i - 1] == '\0')
-			p
+			print_ack_buff(buffer, &buff_i, pid);
 	}
 }
 
