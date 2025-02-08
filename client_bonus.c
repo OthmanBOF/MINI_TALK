@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:13:49 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/08 19:16:28 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:50:35 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ void	seen(int sig)
 	if (sig == SIGUSR1)
 		ft_putstr_fd(GRN "Message Acknowledged. \n" "\e[0m", 1);
 }
-int main(int ac, char **av)
+
+int	main(int ac, char **av)
 {
-	int pid;
-	int x;
+	int	pid;
+	int	x;
 
 	x = 0;
 	if (ac == 3 && av[2][0] != '\0')
@@ -79,11 +80,12 @@ int main(int ac, char **av)
 			while (av[2][x])
 				sig_send(pid, av[2][x++]);
 			sig_send(pid, '\0');
-		} 
+		}
 	}
 	else
 	{
 		ft_putstr_fd(RED "Invalid args or empty msg.\n" "\e[0m", 2);
 		ft_putstr_fd(PUR "Usage: ./client [PID] [MSG]\n" "\e[0m", 2);
 	}
+	return (0);
 }

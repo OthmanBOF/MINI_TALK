@@ -1,39 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 22:27:30 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/08 21:21:57 by obouftou         ###   ########.fr       */
+/*   Created: 2025/02/08 19:17:34 by obouftou          #+#    #+#             */
+/*   Updated: 2025/02/08 21:35:26 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+void	var_res(int *pid, int *w_bit, char *c, int *buff_i)
+{
+	*pid = 0;
+	*w_bit = 0;
+	*c = 0;
+	*buff_i = 0; 
+}
+
+void	print_ack_buff()
+{
+	
+}
+
 void	bit_to_char(int sin, siginfo_t *info, void *context)
 {
-	static int	pid;
-	static int	p_bit;
-	static char	c;
+	static int	pid	= 0;
+	static int	w_bit = 0;
+	static char	c = 0;
+	static char buffer[4] = {0};
+	static int	buff_i = 0;
 
 	(void)context;
 	if (pid != info->si_pid)
+		var_res(&pid, &w_bit, &c, &buff_i);
+	pid = info->si_pid;
+	if (sin = SIGUSR1)
+		c |= (1 << w_bit);
+	w_bit++;
+	if (w_bit = 8)
 	{
-		pid = info->si_pid;
-		p_bit = 0;
+		buffer[buff_i++] = c;
 		c = 0;
-	}
-	if (sin == SIGUSR1)
-		c |= (1 << p_bit);
-	p_bit++;
-	if (p_bit == 8)
-	{
-		ft_putchar_fd(c, 1);
-		c = 0;
-		p_bit = 0;
-		pid = 0;
+		w_bit = 0;
+		if (buff_i == 4 || buffer[buff_i - 1] == '\0')
+			p
 	}
 }
 
