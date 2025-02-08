@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:13:49 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/08 15:09:44 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:16:28 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,29 @@ int	pid_check(char *pid_str)
 	}
 	return (pid);
 }
+
+void	sig_send(int pid, char x)
+{
+	int	sig;
+	int	bit;
+
+	bit = 0;
+	while (bit < 8)
+	{
+		if (x & (1 << bit))
+			sig = SIGUSR1;
+		else
+			sig = SIGUSR2;
+		if (kill(pid, sig) == -1)
+		{
+			ft_putstr_fd(RED "Invalid PID. Signal failed.\n" "\e[0m", 2);
+			exit(1);
+		}
+		usleep(600);
+		bit++;
+	}
+}
+
 void	seen(int sig)
 {
 	if (sig == SIGUSR1)
@@ -49,10 +72,18 @@ int main(int ac, char **av)
 	if (ac == 3 && av[2][0] != '\0')
 	{
 		pid = pid_check(av[1]);
-		if (pid)
+		if (pid != 0)
 		{
 			ft_putstr_fd(GRN "Valid PID.\n" "e[0m", 1);
-			signal(SIGUSR1, seen);	
+			signal(SIGUSR1, seen);
+			while (av[2][x])
+				sig_send(pid, av[2][x++]);
+			sig_send(pid, '\0');
 		} 
+	}
+	else
+	{
+		ft_putstr_fd(RED "Invalid args or empty msg.\n" "\e[0m", 2);
+		ft_putstr_fd(PUR "Usage: ./client [PID] [MSG]\n" "\e[0m", 2);
 	}
 }
