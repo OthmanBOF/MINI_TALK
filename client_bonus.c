@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:13:49 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/08 19:50:35 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:52:55 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	sig_send(int pid, char x)
 			ft_putstr_fd(RED "Invalid PID. Signal failed.\n" "\e[0m", 2);
 			exit(1);
 		}
-		usleep(600);
+		usleep(90);
+		usleep(110);
 		bit++;
 	}
 }
@@ -75,7 +76,7 @@ int	main(int ac, char **av)
 		pid = pid_check(av[1]);
 		if (pid != 0)
 		{
-			ft_putstr_fd(GRN "Valid PID.\n" "e[0m", 1);
+			ft_putstr_fd(GRN "Valid PID.\n" "\e[0m", 1);
 			signal(SIGUSR1, seen);
 			while (av[2][x])
 				sig_send(pid, av[2][x++]);

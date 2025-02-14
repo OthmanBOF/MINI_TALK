@@ -6,7 +6,7 @@
 /*   By: obouftou <obouftou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:27:20 by obouftou          #+#    #+#             */
-/*   Updated: 2025/02/08 19:12:54 by obouftou         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:47:58 by obouftou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	sig_send(int pid, char x)
 			ft_putstr_fd(RED "Invalid PID. Signal failed.\n" "\e[0m", 2);
 			exit(1);
 		}
-		usleep(600);
+		usleep(90);
+		usleep(110);
 		bit++;
 	}
 }
